@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ddol.jwtd9.member.model.dao.MemberMapper">
+
+    <select id="findUserById" parameterType="string" resultType="MemberDTO">
+        SELECT
+            MEMBER_CODE,
+            MEMBER_ID,
+            MEMBER_PWD,
+            MEMBER_NICKNAME,
+            MEMBER_NAME,
+            MEMBER_PHONE,
+            MEMBER_EMAIL,
+            MEMBER_BIRTH,
+            MEMBER_GENDER,
+            ENROLL_DATE,
+            MEMBER_STATUS,
+            BAN_DATE,
+            MEMBER_ROLE
+        FROM MEMBER
+        WHERE MEMBER_ID = #{ memberId }
+    </select>
+
+    <select id="checkById" parameterType="string" resultType="string">
+        SELECT
+            MEMBER_CODE
+        FROM MEMBER
+        WHERE MEMBER_ID = #{ memberId }
+    </select>
+
+    <select id="checkByNickname" parameterType="string" resultType="string">
+        SELECT
+            MEMBER_CODE
+        FROM MEMBER
+        WHERE MEMBER_NICKNAME = #{ memberNickname }
+    </select>
+
+    <select id="checkByEmail" parameterType="string" resultType="string">
+        SELECT
+            MEMBER_CODE
+        FROM MEMBER
+        WHERE MEMBER_EMAIL = #{ memberEmail }
+    </select>
+
+
+    <insert id="insertMember" parameterType="MemberDTO">
+        INSERT INTO MEMBER(
+            MEMBER_CODE,
+            MEMBER_ID,
+            MEMBER_PWD,
+            MEMBER_NICKNAME,
+            MEMBER_NAME,
+            MEMBER_PHONE,
+            MEMBER_EMAIL,
+            MEMBER_BIRTH,
+            MEMBER_GENDER,
+            ENROLL_DATE,
+            MEMBER_STATUS,
+            BAN_DATE
+        ) VALUES (
+            'M'||SEQ_MEMBER_CODE.NEXTVAL,
+            #{ memberId },
+            #{ memberPwd },
+            #{ memberNickname },
+            #{ memberName },
+            #{ memberPhone },
+            #{ memberEmail },
+            #{ memberBirth },
+            #{ memberGender },
+            SYSDATE,
+            'Y',
+            NULL
+        )
+    </insert>
+</mapper>

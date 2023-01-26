@@ -1,0 +1,22 @@
+server:
+  port: 8003
+
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521/xe
+    username: ddolnine
+    password: ddolnine
+
+jwt:
+  secret: dW5pLXJlYWN0LW5naW54LXNwcmluZy1ib290LWp3dC1vcmFjbGUtZG9ja2VyLWVjMi1yZWFjdC1uZ25peC1zcHJpbmctYm9vdC1qd3Qtb3JhY2xlLWRvY2tlci1lYzIK
+
+mybatis:
+  mapper-locations: mybatis/mapper/*.xml
+  type-aliases-package: com.ddol.jwtd9
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    root: info
