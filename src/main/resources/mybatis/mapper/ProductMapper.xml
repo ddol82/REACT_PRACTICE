@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ddol.jwtd9.product.model.dao.ProductMapper">
+
+    <select id="countAllProduct" resultType="ProductDTO">
+        SELECT COUNT(*)
+          FROM PRODUCT
+    </select>
+
+    <insert id="insertProduct" parameterType="ProductDTO">
+        INSERT INTO PRODUCT
+        (
+        PRODUCT_CODE
+        , CATEGORY_CODE
+        , PRODUCT_NAME
+        , PRODUCT_PRICE
+        , PRODUCT_DESCRIPTION
+        , PRODUCT_ORDERABLE
+        , PRODUCT_STOCK
+        , PRODUCT_IMAGE_URL
+        )
+        VALUES
+            (
+            'P'||SEQ_PRODUCT_CODE.NEXTVAL
+            , #{categoryCode}
+            , #{productName}
+            , #{productPrice}
+            , #{productDescription}
+            , #{productOrderable}
+            , #{productStock}
+            , #{productImageUrl}
+            )
+    </insert>
+
+</mapper>

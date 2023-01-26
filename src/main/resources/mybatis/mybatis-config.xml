@@ -13,9 +13,11 @@
 
 	<typeAliases>
 		<typeAlias alias="MemberDTO" type="com.ddol.jwtd9.member.model.dto.MemberDTO"/>
+		<typeAlias alias="ProductDTO" type="com.ddol.jwtd9.product.model.dto.ProductDTO"/>
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="MemberMapper.xml" />
+		<mapper resource="ProductMapper.xml" />
 	</mappers>
 </configuration>
