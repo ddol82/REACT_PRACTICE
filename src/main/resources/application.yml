@@ -15,6 +15,9 @@ spring:
   web:
     resources:
       static-locations: classpath:/poisonimgs/
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
 image:
   add-resource-locations: /poisonimgs/
